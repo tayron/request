@@ -72,7 +72,7 @@ final class Request
     }
 	
 	/**
-	 * Request::getInstancia
+	 * Request::getInstance
 	 * 
 	 * Retorna uma instância única de uma classe.
 	 *
@@ -80,7 +80,7 @@ final class Request
 	 *
 	 * @return Singleton A Instância única.
 	 */
-	public static function getInstancia() 
+	public static function getInstance() 
 	{
 		if (!static::$instance) {
 			static::$instance = new static();
