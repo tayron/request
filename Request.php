@@ -1,5 +1,5 @@
 <?php
-namespace OnFramework\lib;
+namespace Tayron;
 
 use \InvalidArgumentException;
 use \Exception;
