@@ -17,7 +17,7 @@ Classe que trata e gerencia informações de requisições
 ```sh
     "require": {
         ...
-        "tayron/request" : "1.0"
+        "tayron/request" : "1.0.1"
         ... 
     },    
 ```
