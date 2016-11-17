@@ -1,4 +1,4 @@
-## Request 1.0.1
+## Request 1.0.2
 
 Classe que trata e gerencia informações de requisições
 
@@ -17,7 +17,7 @@ Classe que trata e gerencia informações de requisições
 ```sh
     "require": {
         ...
-        "tayron/request" : "1.0.1"
+        "tayron/request" : "1.0.2"
         ... 
     },    
 ```

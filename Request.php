@@ -210,6 +210,6 @@ final class Request
      */
     public function url($controllerAction = null)
     {
-        return str_replace('//', '/', $this->urlPath . $this->urlBase . $controllerAction);
+        return $this->urlPath . str_replace('//', '/', $this->urlBase . $controllerAction);
     }
 }
