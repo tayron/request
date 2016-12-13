@@ -162,7 +162,7 @@ final class Request
      */
     public function getPostParameter($key = null)
     {
-        return $this->getParameters($key, INPUT_POST);
+        return $this->getParameters(INPUT_POST, $key);
     }
     
     /**
@@ -175,19 +175,20 @@ final class Request
      */
     public function getGetParameter($key = null)
     {
-        return $this->getParameters($key, INPUT_GET);
+        return $this->getParameters(INPUT_GET, $key);
     }    
     
     /**
 	 * Request::getParametros
 	 * 
      * Método que retorna lista de parametros, seja via post ou via get
-	 * 
-	 * @param string $key Nome do parametro POST ou GET
+	 * 	 
 	 * @param string $type Tipo de parametro, sendo 1 para GET e 0 para POST
+     * @param string $key Nome do parametro POST ou GET
+     * 
 	 * @return mixed Valor aramazenado via POST ou GET
      */
-    private function getParameters($key, $type)
+    private function getParameters($type, $key = null)
     {
         $parameters = filter_input_array($type);
 
