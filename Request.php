@@ -212,4 +212,28 @@ final class Request
     {
         return $this->urlPath . str_replace('//', '/', $this->urlBase . $controllerAction);
     }
+    
+    /**
+	 * Request::isPost
+	 * 
+     * Método que informa se a requisição feita foi via POST
+	 * 
+	 * @return boolean Retorna true caso a requisição seja feita via POST
+     */    
+    public function isPost()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
+    
+    /**
+	 * Request::isPost
+	 * 
+     * Método que informa se a requisição feita foi via GET
+	 * 
+	 * @return boolean Retorna true caso a requisição seja feita via GET
+     */    
+    public function isGet()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'GET';
+    }    
 }
