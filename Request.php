@@ -192,11 +192,13 @@ final class Request
         $parameters = filter_input_array($type);
 
         if($key && isset($parameters[$key])){
-            return $parameters[$key];
+            return htmlentities($parameters[$key]);
         }
         
         if($key == null){
-            return $parameters;
+            return array_map(function($key, &$value){
+                return htmlentities($value);
+            }, $parameters);
         }        
     }
     
