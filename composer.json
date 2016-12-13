@@ -1,7 +1,7 @@
 {
     "name": "tayron/request",
     "description": "Classe que trata e gerencia informações de requisições",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "type": "classe-utilitaria",
     "homepage": "https://github.com/tayron/request",
     "authors": [
