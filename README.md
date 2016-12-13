@@ -1,4 +1,4 @@
-## Request 1.0.2
+## Request 1.1.0
 
 Classe que trata e gerencia informações de requisições
 
@@ -9,6 +9,8 @@ Classe que trata e gerencia informações de requisições
   - getPostParameter($key) - Metodo que retorna os parametros enviados via POST
   - getGetParameter($key) - Metodo que retorna os parametros enviados via GET 
   - url($controllerAction) - Método que monta a retorna url para uma determinada pagina
+  - isPost() - Método que informa se a requisição é via POST
+  - isGet() - Método que informa se a requisição é via GET
    
 
 
@@ -17,7 +19,7 @@ Classe que trata e gerencia informações de requisições
 ```sh
     "require": {
         ...
-        "tayron/request" : "1.0.2"
+        "tayron/request" : "1.1.0"
         ... 
     },    
 ```
