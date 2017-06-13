@@ -195,6 +195,28 @@ final class Request
     {
         return $this->getParameters(INPUT_GET, $key);
     }
+    
+    /**
+     * Request::getPutParameter
+     *
+     * Metodo que retorna os parametros enviados via PUT
+     *
+     * @param string $key Nome do parametro a ser recuperado
+     * @return mixed Valor aramazenado via PUT
+     */    
+    final public function getPutParameter($key = null)
+    {
+        $parameters = null;
+        parse_str(file_get_contents("php://input"), $parameters);
+
+        if(is_null($key)){
+            return $parameters;
+        }
+        
+        if(isset($parameters[$key])){
+            return $parameters[$key];
+        }
+    }
 
     /**
      * Request::getParametros
@@ -209,13 +231,17 @@ final class Request
     private function getParameters($type, $key = null) 
     {
         $parameters = filter_input_array($type);
+        
+        if(!$parameters){
+            return null;
+        }
 
         if ($key && isset($parameters[$key])) {
             return $parameters[$key];
         }
 
         if ($key == null) {
-            return array_map(function($key, &$value) {
+            return array_map(function(&$value) {
                 return $value;
             }, $parameters);
         }
