@@ -11,6 +11,8 @@ Classe que trata e gerencia informações de requisições
   - url($controllerAction) - Método que monta a retorna url para uma determinada pagina
   - isPost() - Método que informa se a requisição é via POST
   - isGet() - Método que informa se a requisição é via GET
+  - isPut() - Método que informa se a requisição é via PUT
+  - isDelete() - Método que informa se a requisição é via DELETE
    
 
 
