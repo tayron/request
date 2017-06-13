@@ -108,27 +108,44 @@ final class Request
      * @param array $controllerAction Lista com nome do controller e action
      * @return void
      */
-    public function redirect(array $controllerAction) 
+    final public function redirect(array $controllerAction) 
     {
-        $controller = (isset($controllerAction['controller']) && $controllerAction['controller'] !== null) ? $controllerAction['controller'] : null;
+        $controller = (isset($controllerAction['controller']) && $controllerAction['controller'] !== null) 
+            ? $controllerAction['controller'] : null;
 
-        $action = (isset($controllerAction['action']) && $controllerAction['action'] !== null) ? $controllerAction['action'] : null;
+        $action = (isset($controllerAction['action']) && $controllerAction['action'] !== null) 
+            ? $controllerAction['action'] : null;
 
         if ($controller == null && $action == null) {
-            throw new InvalidArgumentException('redirect', 'Deve-se informar um controller e/ou uma action para se efetuar o redirect');
+            throw new InvalidArgumentException('redirect', 
+                'Deve-se informar um controller e/ou uma action para se efetuar o redirect');
         }
 
         if ($controller != null && $action != null) {
-            header("Location: /$controller/$action");
+            $this->redirectTo("/$controller/$action");
         }
 
         if ($controller != null && $action == null) {
-            header("Location: /$controller");
+            $this->redirectTo("/$controller");
         }
 
         if ($controller == null && $action != null) {
-            header("Location: /$action");
+            $this->redirectTo("/$action");
         }
+    }
+    
+    /**
+     * Request::redirectTo
+     *
+     * Método que retorna para uma página qualquer
+     *
+     * @param string $location Local para onde será redirecionado
+     * 
+     * @return void
+     */    
+    private function redirectTo($location)
+    {        
+        header("Location $location");
     }
 
     /**
@@ -138,9 +155,10 @@ final class Request
      *
      * @return array Lista de parametros da requisições uri
      */
-    public function getUri() 
+    final public function getUri() 
     {
-        $itenListUri = explode('/', str_replace($this->urlPath . $this->urlBase, null, $this->urlCurrent));
+        $itenListUri = explode('/', str_replace($this->urlPath . $this->urlBase, 
+            null, $this->urlCurrent));
 
         $itensList = array();
         foreach ($itenListUri as $item) {
@@ -159,7 +177,7 @@ final class Request
      * @param string $key Nome do parametro a ser recuperado
      * @return mixed Valor aramazenado via POST
      */
-    public function getPostParameter($key = null) 
+    final public function getPostParameter($key = null) 
     {
         return $this->getParameters(INPUT_POST, $key);
     }
@@ -172,7 +190,7 @@ final class Request
      * @param string $key Nome do parametro a ser recuperado
      * @return mixed Valor aramazenado via GET
      */
-    public function getGetParameter($key = null) 
+    final public function getGetParameter($key = null) 
     {
         return $this->getParameters(INPUT_GET, $key);
     }
@@ -210,7 +228,7 @@ final class Request
      * @param string $controllerAction Nome do controller + action podendo ter parametros via get
      * @return string Retorna url completa com o link informado
      */
-    public function url($controllerAction = null) 
+    final public function url($controllerAction = null) 
     {
         return $this->urlPath . str_replace('//', '/', $this->urlBase . $controllerAction);
     }
@@ -222,9 +240,9 @@ final class Request
      *
      * @return boolean Retorna true caso a requisição seja feita via POST
      */
-    public function isPost() 
+    final public function isPost() 
     {
-        return $_SERVER['REQUEST_METHOD'] === 'POST';
+        return $this->is('POST');
     }
 
     /**
@@ -234,8 +252,44 @@ final class Request
      *
      * @return boolean Retorna true caso a requisição seja feita via GET
      */
-    public function isGet() 
+    final public function isGet() 
     {
-        return $_SERVER['REQUEST_METHOD'] === 'GET';
+        return $this->is('GET');
+    }
+    
+    /**
+     * Request::isDelete
+     *
+     * Método que informa se a requisição feita foi via DELETE
+     *
+     * @return boolean Retorna true caso a requisição seja feita via DELETE
+     */
+    final public function isDelete() 
+    {
+        return $this->is('DELETE');
+    }    
+    
+    /**
+     * Request::isPut
+     *
+     * Método que informa se a requisição feita foi via PUT
+     *
+     * @return boolean Retorna true caso a requisição seja feita via PUT
+     */
+    final public function isPut() 
+    {
+        return $this->is('PUT');
+    }
+    
+    /**
+     * Request::is
+     *
+     * Método que informa se a requisição feita foi via GET OU POST
+     *
+     * @return boolean Retorna true caso a requisição seja feita via GET ou POST
+     */    
+    private function is($method)
+    {
+        return $_SERVER['REQUEST_METHOD'] === $method;
     }
 }
