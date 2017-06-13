@@ -273,7 +273,7 @@ final class Request
     }
 
     /**
-     * Request::isPost
+     * Request::isGet
      *
      * Método que informa se a requisição feita foi via GET
      *
