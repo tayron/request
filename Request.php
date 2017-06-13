@@ -89,7 +89,8 @@ final class Request
         }
 
         // Armazena a url base do servidor, exemplo: http://localhost ou http://localhost:81
-        self::$instance->urlPath = (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
+        self::$instance->urlPath = (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) 
+            ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'];
 
         // Armazena a url base do camiho onde o sistema está, exemplo: / ou /diretorio/matriz/
         self::$instance->urlBase = str_replace('index.php', null, $_SERVER['SCRIPT_NAME']);
