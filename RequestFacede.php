@@ -110,7 +110,7 @@ final class RequestFacede implements RequestInterface
      */
     final public function isPost() 
     {
-        return $this->request->isMethod('POST');
+        return $this->request->isMethod(Request::METHOD_POST);
     }
 
     /**
@@ -121,7 +121,7 @@ final class RequestFacede implements RequestInterface
      */
     final public function isGet() 
     {
-        return $this->request->isMethod('GET');
+        return $this->request->isMethod(Request::METHOD_GET);
     }
     
     /**
@@ -132,7 +132,7 @@ final class RequestFacede implements RequestInterface
      */
     final public function isDelete() 
     {
-        return $this->request->isMethod('DELETE');
+        return $this->request->isMethod(Request::METHOD_DELETE);
     }    
     
     /**
@@ -143,6 +143,6 @@ final class RequestFacede implements RequestInterface
      */
     final public function isPut() 
     {
-        return $this->request->isMethod('PUT');        
+        return $this->request->isMethod(Request::METHOD_PUT);        
     }
 }
