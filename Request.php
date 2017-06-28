@@ -10,7 +10,7 @@ use \Exception;
  *
  * @author Tayron Miranda <dev@tayron.com.br>
  */
-final class Request 
+final class Request
 {
     /**
      * Armazena a url base do servidor, exemplo: http://localhost ou http://localhost:81
@@ -104,9 +104,7 @@ final class Request
     /**
      * Request::redirect
      *
-     * Método que redireciona para uma outra tela
-     *
-     * @param array $controllerAction Lista com nome do controller e action
+     * @see RequestInterface::redirect($controllerAction)
      * @return void
      */
     final public function redirect(array $controllerAction) 
@@ -152,8 +150,7 @@ final class Request
     /**
      * Request::getUri
      *
-     * Método que retorna uma lista de parametros informados na URI
-     *
+     * @see RequestInterface::getUri()
      * @return array Lista de parametros da requisições uri
      */
     final public function getUri() 
@@ -173,9 +170,7 @@ final class Request
     /**
      * Request::getPostParameter
      *
-     * Metodo que retorna os parametros enviados via POST
-     *
-     * @param string $key Nome do parametro a ser recuperado
+     * @see RequestInterface::getPostParameter($key)
      * @return mixed Valor aramazenado via POST
      */
     final public function getPostParameter($key = null) 
@@ -186,9 +181,7 @@ final class Request
     /**
      * Request::getGetParameter
      *
-     * Metodo que retorna os parametros enviados via GET
-     *
-     * @param string $key Nome do parametro a ser recuperado
+     * @see RequestInterface::getGetParameter($key)
      * @return mixed Valor aramazenado via GET
      */
     final public function getGetParameter($key = null) 
@@ -199,9 +192,7 @@ final class Request
     /**
      * Request::getPutParameter
      *
-     * Metodo que retorna os parametros enviados via PUT
-     *
-     * @param string $key Nome do parametro a ser recuperado
+     * @see RequestInterface::getPutParameter($key)
      * @return mixed Valor aramazenado via PUT
      */    
     final public function getPutParameter($key = null)
@@ -250,9 +241,7 @@ final class Request
     /**
      * Request::url
      *
-     * Método que monta a retorna url para uma determinada pagina
-     *
-     * @param string $controllerAction Nome do controller + action podendo ter parametros via get
+     * @see RequestInterface::url($controllerAction)
      * @return string Retorna url completa com o link informado
      */
     final public function url($controllerAction = null) 
@@ -263,8 +252,7 @@ final class Request
     /**
      * Request::isPost
      *
-     * Método que informa se a requisição feita foi via POST
-     *
+     * @see RequestInterface::isPost()
      * @return boolean Retorna true caso a requisição seja feita via POST
      */
     final public function isPost() 
@@ -275,8 +263,7 @@ final class Request
     /**
      * Request::isGet
      *
-     * Método que informa se a requisição feita foi via GET
-     *
+     * @see RequestInterface::isGet()
      * @return boolean Retorna true caso a requisição seja feita via GET
      */
     final public function isGet() 
@@ -287,8 +274,7 @@ final class Request
     /**
      * Request::isDelete
      *
-     * Método que informa se a requisição feita foi via DELETE
-     *
+     * @see RequestInterface::isDelete()
      * @return boolean Retorna true caso a requisição seja feita via DELETE
      */
     final public function isDelete() 
@@ -299,8 +285,7 @@ final class Request
     /**
      * Request::isPut
      *
-     * Método que informa se a requisição feita foi via PUT
-     *
+     * @see RequestInterface::isPut()
      * @return boolean Retorna true caso a requisição seja feita via PUT
      */
     final public function isPut() 
