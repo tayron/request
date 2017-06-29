@@ -1,10 +1,11 @@
 ## Request
 
-Classe que trata e gerencia informações de requisições
+Classe que trata e gerencia informações de requisições, usando biblioteca 
+symfony/http-foundation na versão: v2.8.22
 
 
 ## Recursos
-  - redirect($controllerAction) - Rerediona para a uri informada, exemplo: cliente/listar
+  - redirect($location) - Rerediona para a uri informada, exemplo: cliente/listar ou http://www.google.com.br
   - getUri() - Método que retorna uma lista de parametros informados na URI
   - getPostParameter($key) - Metodo que retorna os parametros enviados via POST
   - getGetParameter($key) - Metodo que retorna os parametros enviados via GET 
