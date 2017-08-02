@@ -23,7 +23,7 @@ final class RequestFacede implements RequestInterface
      */
     public function __construct() 
     {
-        $this->request = new Request();
+        $this->request = Request::createFromGlobals();
     }
     
     /**
